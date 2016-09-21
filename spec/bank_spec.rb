@@ -9,4 +9,12 @@ describe Bank do
       expect(subject.balance).to eq 0
     end
   end
+
+  context '#deposit' do
+    it 'allows user to add to balance' do
+      subject.deposit 100
+      expect(subject.balance).to eq 100
+    end
+  end
+  
 end
