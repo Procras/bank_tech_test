@@ -20,7 +20,7 @@ describe Bank do
       expect(subject.balance).to eq 100
     end
     it 'adds info to history' do
-      expect(subject.deposit(100)).to eq "DATE: #{Date.today.to_s} || DEPOSIT: 100 || BALANCE: 100"
+      expect(subject.deposit(100)).to eq "DATE: #{Date.today.to_s} || DEPOSIT: 100 || WITHDREW: || BALANCE: 100"
     end
   end
 
@@ -32,7 +32,7 @@ describe Bank do
   end
   it 'adds info to history' do
       subject.deposit(100)
-      expect(subject.withdraw(50)).to include "DATE: #{Date.today.to_s} || WITHDREW: 50 || BALANCE: 50"
+      expect(subject.withdraw(50)).to include "DATE: #{Date.today.to_s} || DEPOSIT: || WITHDREW: 50 || BALANCE: 50"
     end
   end
 
@@ -41,9 +41,10 @@ describe Bank do
      subject.deposit(1000)
      subject.deposit(2000)
      subject.withdraw(500)
-     expect(subject.print_history).to eq ["DATE: #{Date.today.to_s} || WITHDREW: 500 || BALANCE: 2500",
-                                             "DATE: #{Date.today.to_s} || DEPOSIT: 2000 || BALANCE: 3000",
-                                             "DATE: #{Date.today.to_s} || DEPOSIT: 1000 || BALANCE: 1000"]
-   end
+     expect(subject.print_history).to eq [
+                                             "DATE: #{Date.today.to_s} || DEPOSIT: || WITHDREW: 500 || BALANCE: 2500",
+                                             "DATE: #{Date.today.to_s} || DEPOSIT: 2000 || WITHDREW: || BALANCE: 3000",
+                                             "DATE: #{Date.today.to_s} || DEPOSIT: 1000 || WITHDREW: || BALANCE: 1000"]
+  end
  end
 end

@@ -1,4 +1,5 @@
 class Bank
+  HISTORY_HEADER = "date || credit || debit || balance"
   attr_reader :balance, :history
 
   def initialize
@@ -23,12 +24,18 @@ class Bank
   private
 
   def add_deposit_info amount
-    @history << "DATE: #{Date.today.to_s} || DEPOSIT: #{amount} || BALANCE: #{@balance}"
+    @history << "DATE: #{Date.today.to_s} || DEPOSIT: #{amount} || WITHDREW: || BALANCE: #{@balance}"
     @history.join()
   end
 
   def add_withdrawl_info amount
-    @history << "DATE: #{Date.today.to_s} || WITHDREW: #{amount} || BALANCE: #{@balance}"
+    @history << "DATE: #{Date.today.to_s} || DEPOSIT: || WITHDREW: #{amount} || BALANCE: #{@balance}"
     @history.join()
   end
 end
+
+subject = Bank.new
+subject.deposit 1000
+subject.deposit 2000
+subject.withdraw 500
+subject.print_history
