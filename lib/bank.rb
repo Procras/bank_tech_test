@@ -16,5 +16,9 @@ class Bank
    @balance -= amount
    @history << "DATE: #{Date.today.to_s} || WITHDREW: #{amount} || BALANCE: #{@balance}"
    @history.join()
- end
+  end
+
+  def print_history
+    @history.reverse.map { |i| p i }
+  end
 end

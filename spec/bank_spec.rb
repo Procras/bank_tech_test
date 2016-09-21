@@ -35,4 +35,15 @@ describe Bank do
       expect(subject.withdraw(50)).to include "DATE: #{Date.today.to_s} || WITHDREW: 50 || BALANCE: 50"
     end
   end
+
+  context '#print_history' do
+   it 'allows user to print history' do
+     subject.deposit(100)
+     subject.deposit(200)
+     subject.withdraw(150)
+     expect(subject.print_history).to eq ["DATE: #{Date.today.to_s} || WITHDREW: 150 || BALANCE: 150",
+                                             "DATE: #{Date.today.to_s} || DEPOSIT: 200 || BALANCE: 300",
+                                             "DATE: #{Date.today.to_s} || DEPOSIT: 100 || BALANCE: 100"]
+   end
+ end
 end
