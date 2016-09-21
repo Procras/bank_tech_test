@@ -8,6 +8,8 @@ class Bank
 
   def deposit amount
     @balance += amount
+    @history << "DATE: #{Date.today.to_s} || DEPOSIT: #{amount} || BALANCE: #{@balance}"
+    @history.join()
   end
 
   def withdraw amount

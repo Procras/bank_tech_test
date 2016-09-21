@@ -19,6 +19,9 @@ describe Bank do
       subject.deposit 100
       expect(subject.balance).to eq 100
     end
+    it 'adds info to history' do
+      expect(subject.deposit(100)).to eq "DATE: #{Date.today.to_s} || DEPOSIT: 100 || BALANCE: 100"
+    end
   end
 
   context '#withdraw' do
