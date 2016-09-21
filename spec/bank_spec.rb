@@ -8,6 +8,10 @@ describe Bank do
     it 'with a balance of 0' do
       expect(subject.balance).to eq 0
     end
+
+    it 'with an empty history' do
+      expect(subject.history).to be_empty
+    end
   end
 
   context '#deposit' do
