@@ -14,5 +14,7 @@ class Bank
 
   def withdraw amount
    @balance -= amount
+   @history << "DATE: #{Date.today.to_s} || WITHDREW: #{amount} || BALANCE: #{@balance}"
+   @history.join()
  end
 end
