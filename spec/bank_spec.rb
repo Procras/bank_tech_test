@@ -38,12 +38,12 @@ describe Bank do
 
   context '#print_history' do
    it 'allows user to print history' do
-     subject.deposit(100)
-     subject.deposit(200)
-     subject.withdraw(150)
-     expect(subject.print_history).to eq ["DATE: #{Date.today.to_s} || WITHDREW: 150 || BALANCE: 150",
-                                             "DATE: #{Date.today.to_s} || DEPOSIT: 200 || BALANCE: 300",
-                                             "DATE: #{Date.today.to_s} || DEPOSIT: 100 || BALANCE: 100"]
+     subject.deposit(1000)
+     subject.deposit(2000)
+     subject.withdraw(500)
+     expect(subject.print_history).to eq ["DATE: #{Date.today.to_s} || WITHDREW: 500 || BALANCE: 2500",
+                                             "DATE: #{Date.today.to_s} || DEPOSIT: 2000 || BALANCE: 3000",
+                                             "DATE: #{Date.today.to_s} || DEPOSIT: 1000 || BALANCE: 1000"]
    end
  end
 end
